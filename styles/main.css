@@ -17,24 +17,31 @@ code {
   color: orange;
 }
 
-#meta {
+#meta, #latex {
   margin-top: 15px;
   width: 50%;
   align-content: right;
 }
 
-#meta label {
+#meta label,
+#latex label {
   padding-bottom: 5px;
   display: block;
 }
 
 #meta input,
-#meta textarea {
+#meta textarea,
+#latex input,
+#latex textarea {
   width: 100%;
 }
 
 #meta textarea {
   height: 4em;
+}
+
+#latex textarea {
+  height: 12em;
 }
 
 #sidebar {
@@ -90,7 +97,7 @@ hr {
   width: 66%;
   border: 0;
   border-top: 1px solid black;
-  margin-top: 1.75em;
+  margin-top: 3.75em;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -170,4 +177,14 @@ hr:after {
 
 #hamburger-menu > div:hover {
   background-color: #e0e0e0;
+}
+
+.lettrine {
+  font-variant: small-caps;
+  display: inline-block;
+}
+
+.lettrine::first-letter {
+  font-weight: bold;
+  font-size: 2em;
 }

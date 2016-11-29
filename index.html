@@ -238,6 +238,13 @@
           target="_blank">documentation</a> for details.
         </li>
       </ol>
+      <h3>TeX</hr>
+      <ol>
+        <li>
+          The <code>~text~</code> will be translated to
+          <code>\lettrine{t}{ext}</code>.
+        </li>
+      </ol>
     </div>
     <h2>Preview</h2>
     <div style="padding-bottom: 10px;">
@@ -262,6 +269,7 @@
   </div>
   <div>
     <button id="shorten">Short Link</button>
+    <button id="export-tex">TeX</button>
     <button id="export">Export</button>
     Import: <input id="import" type="file">
   </div>
@@ -278,6 +286,12 @@
   <div id="post-processing">
   </div>
   <button class="add">Add</button>
+  <div id="latex">
+    <h1>TeX</h1>
+    <label>Prologue: <textarea id="latex-prologue"></textarea></label>
+    <label>Chapter: <input type="text" id="latex-chapter"></input></label>
+    <label>Epilogue: <textarea id="latex-epilogue"></textarea></label>
+  </div>
   <div id="meta">
     <h1>Metadata</h1>
     <label>Title: <input type="text" id="meta-title"></label>

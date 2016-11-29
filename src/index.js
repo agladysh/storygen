@@ -453,7 +453,40 @@ var UNSERIALIZE = function(str) {
   DATA.postprocessing = DATA.postprocessing || DEFAULT_DATA().postprocessing;
   DATA.preview = DATA.preview || DEFAULT_DATA().preview;
   DATA.meta = DATA.meta || DEFAULT_DATA().meta;
+  DATA.latex = DATA.latex || DEFAULT_DATA().latex;
 };
+
+var DEFAULT_LATEX = function() { return {
+  // TODO: Use title, authors and date from the metadata
+    prologue:
+'\\documentclass[ebook,twoside,final,openright]{memoir}\n' +
+'\n' +
+'\\usepackage[utf8]{inputenc}\n' +
+'\\usepackage{graphicx}\n' +
+'\\usepackage[T1]{fontenc}\n' +
+'\\usepackage{lettrine}\n' +
+'\n' +
+'%% -------------------------------------------------------------------------- %%\n' +
+'\n' +
+'\\begin{document}\n' +
+'\n' +
+'\\frontmatter\n' +
+'\\aliaspagestyle{title}{empty}\n' +
+'\\title{\\Huge{Old Starship Tales}}\n' +
+'\\author{\n' +
+'  Story template by Timofey Yarovoy and Andrey Shkolnikov,\\\\\n' +
+'  translated by Andrey Shkolnikov,\\\\\n' +
+'  proofread by Anriett and Alexander Gladysh,\\\\\n' +
+'  generated with code by Alexander Gladysh\\\\\n' +
+'}\n' +
+'\\date{LogicEditor\\\\NaNoGenMo 2016}\n' +
+'\n' +
+'\\maketitle\n' +
+'\n' +
+'\\mainmatter\n',
+  chapter: '\n\\chapter{}\n',
+  epilogue: '\n\\end{document}\n'
+}; };
 
 var CLEAR_DATA = function() { return {
   meta: {
@@ -473,7 +506,8 @@ var CLEAR_DATA = function() { return {
   sentences: [
     "This is {bool}."
   ],
-  postprocessing: [ ]
+  postprocessing: [ ],
+  latex: DEFAULT_LATEX()
 }; };
 
 var CHAT_DATA = function() { return {
@@ -500,7 +534,8 @@ var CHAT_DATA = function() { return {
     { find: " [ ]+", replace: " " },
     { find: ",[ ]*,", replace: "," },
     { find: " ([,.])", replace: "$1" }
-  ]
+  ],
+  latex: DEFAULT_LATEX()
 }; };
 
 var DEFAULT_DATA = function() { return {
@@ -555,13 +590,13 @@ var DEFAULT_DATA = function() { return {
     ]
   }),
   sentences: [
-    "There was {a|Hobbit>race}. {A|$race} was {beautiful}.\n"
+    "~There was {a|Hobbit>race}.~ {A|$race} was {beautiful}.\n"
     + "{=He|$race} was {a|honest>honesty} {$race}. Once {=he|$race} saw"
     + " {a|hobbit>opponent}.\n"
     + "'Hi!' said {$opponent}. '{=Oops|$honesty}' said {$race}.\n"
     + "{=outcome|$honesty}",
 
-    "Жил-был {Хоббит>раса}. {$раса} был {красивый}.\n"
+    "~Жил-был~ {Хоббит>раса}. {$раса} был {красивый}.\n"
     + "{=Он|$раса} был {честный>честность} {$раса}. Однажды {=он|$раса} увидел"
     + " {хоббит>оппонент}.\n"
     + "'Привет!', сказал {$оппонент}. '{=Опа|$честность}', сказал {$раса}.\n"
@@ -571,7 +606,8 @@ var DEFAULT_DATA = function() { return {
     { find: " [ ]+", replace: " " },
     { find: ",[ ]*,", replace: "," },
     { find: " ([,.])", replace: "$1" }
-  ]
+  ],
+  latex: DEFAULT_LATEX()
 }; };
 
 var dataToUrl = function() {
@@ -605,6 +641,7 @@ if (!DATA) {
 DATA.postprocessing = DATA.postprocessing || DEFAULT_DATA().postprocessing;
 DATA.preview = DATA.preview || DEFAULT_DATA().preview;
 DATA.meta = DATA.meta || DEFAULT_DATA().meta;
+DATA.latex = DATA.latex || DEFAULT_DATA().latex;
 
 var CHAT = { };
 
@@ -720,6 +757,34 @@ var highlightErrors = function(parent, text) {
   return parent;
 };
 
+var highlightDropCap = function(parent, text) {
+  var inDropCap = false;
+  text.split(/(~)/g).forEach(function(item) {
+    if (!inDropCap) {
+      if (item === "~") {
+        inDropCap = true;
+      } else if (item !== '') {
+        parent.add("span").textContent = item;
+      }
+    } else {
+      if (item === "~") {
+        inDropCap = false;
+      } else {
+        parent.add("div.lettrine").textContent = item;
+      }
+    }
+  });
+  return parent;
+};
+
+var highlightStuff = function(parent, text) {
+  if (text.indexOf('{') >= 0) {
+    return highlightErrors(parent, text);
+  } else {
+    return highlightDropCap(parent, text);
+  }
+};
+
 updateChat = function() {
   var chat = HTML.query("#chat");
 
@@ -744,26 +809,46 @@ updateChat = function() {
   }
 };
 
+var generateDataset = function() {
+  var chance = new Chance(DATA.preview.seed);
+  var snapshot = JSON.stringify(DATA);
+
+  var result = [ ];
+  for (var i = 0; i < DATA.preview.size; ++i) {
+    result.push(generate_one(makeSampler(chance), JSON.parse(snapshot)));
+  }
+  return result;
+};
+
+var generateLatex = function(dataset) {
+  return DATA.latex.prologue + dataset.map(function(entry) {
+    return DATA.latex.chapter + entry
+      // TODO: Quick hack. Use a normal command instead.
+      .replace(/\~(.*?)\~/g, function(text, match) {
+        return match.replace(/^(.)[ ]*(.*)$/, '\\lettrine{$1}{$2}');
+      })
+      .replace(/\n/g, '\\par\n');
+  }).join('') + DATA.latex.epilogue;
+};
+
 var updatePreview = function() {
   var preview = HTML.query("#preview");
 
   clear(preview);
 
-  var chance = new Chance(DATA.preview.seed);
-
-  var snapshot = JSON.stringify(DATA);
-  for (var i = 0; i < DATA.preview.size; ++i) {
+  var dataset = generateDataset();
+  for (var i = 0; i < dataset.length; ++i) {
     if (i > 0 && DATA.preview.separator) {
       preview.add('hr');
     }
 
-    var text = generate_one(makeSampler(chance), JSON.parse(snapshot));
+    var text = dataset[i];
     var div = preview.add('div');
     if (text.length <= 140 || !DATA.preview.overflow) {
-      highlightErrors(div.add('span'), text);
+      highlightStuff(div.add('span'), text);
     } else {
-      highlightErrors(div.add('span'), text.slice(0, 140));
-      highlightErrors(div.add('span.too-long'), text.slice(140));
+      highlightStuff(div.add('span'), text.slice(0, 140));
+      highlightStuff(div.add('span.too-long'), text.slice(140));
     }
   }
 
@@ -799,6 +884,10 @@ var redisplay = function() {
   HTML.query("#meta-title").value = DATA.meta.title;
   HTML.query("#meta-author").value = DATA.meta.author;
   HTML.query("#meta-description").value = DATA.meta.description;
+
+  HTML.query("#latex-prologue").value = DATA.latex.prologue;
+  HTML.query("#latex-chapter").value = DATA.latex.chapter;
+  HTML.query("#latex-epilogue").value = DATA.latex.epilogue;
 };
 
 var onDataChanged = function() {
@@ -1052,17 +1141,8 @@ var init = function() {
     addPostProcessingRule();
   });
 
-  HTML.query("#export").addEventListener('click', function() {
-    var data = [ JSON.stringify({
-      version: VERSION,
-      payload: DATA
-    }, null, "  ") ];
-
-    var filename = "storygen.json";
-    var properties = { type: 'application/json' };
-    var blob = new Blob(data, properties);
-
-    var url = window.URL.createObjectURL(blob);
+  var saveStringAsFile = function(filename, type, string) {
+    var url = window.URL.createObjectURL(new Blob([ string ], { type: type }));
 
     var a = document.createElement('a');
     a.style = "display: none";
@@ -1074,6 +1154,21 @@ var init = function() {
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     }, 100);
+  };
+
+  HTML.query("#export").addEventListener('click', function() {
+    saveStringAsFile('storygen.json', 'application/json', JSON.stringify({
+      version: VERSION,
+      payload: DATA
+    }, null, "  "));
+  });
+
+  HTML.query("#export-tex").addEventListener('click', function() {
+    saveStringAsFile(
+      'storygen.tex',
+      'application/x-tex',
+      generateLatex(generateDataset())
+    );
   });
 
   HTML.query("#import").addEventListener('change', function(e) {
@@ -1148,6 +1243,21 @@ var init = function() {
 
   HTML.query("#meta-description").addEventListener('change', function() {
     DATA.meta.description = this.value;
+    onDataChanged();
+  });
+
+  HTML.query("#latex-prologue").addEventListener('change', function() {
+    DATA.latex.prologue = this.value;
+    onDataChanged();
+  });
+
+  HTML.query("#latex-chapter").addEventListener('change', function() {
+    DATA.latex.chapter = this.value;
+    onDataChanged();
+  });
+
+  HTML.query("#latex-epilogue").addEventListener('change', function() {
+    DATA.latex.epilogue = this.value;
     onDataChanged();
   });
 
