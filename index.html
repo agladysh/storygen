@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>Story Generator</title>
+</head>
+<body>
+  <div id="hamburger">
+    <div id="hamburger-button">☰</div>
+    <div id="hamburger-menu" class="hidden"></div>
+  </div>
+  <h1>Story Generator</h1>
+  <div id="sidebar">
+    <button id="help">Help</button>
+    <button id="chat-toggle">Chat</button>
+    <div id="chat" class="hidden">
+    </div>
+    <div id="manual" class="hidden">
+      <h2>Syntax</h2>
+      <h3>Dictionary</h3>
+      <ol>
+        <li>
+          One entry per line.
+        </li>
+        <li>
+          Alternatively, use <code>--8&lt;--</code>
+          to separate dictionary entries (surrounding whitespace will
+          be trimmed). If the first entry of a dictionary delimited by
+          <code>--8&lt;--</code> is empty, that entry is ignored.
+        </li>
+        <li>
+          Entry may be a simple word: <code>hobbit</code>
+          or longer text: <code>Emperor of Earth</code>
+        </li>
+        <li>
+          You may provide metadata fields for the entry.
+          Metadata fields are separated by <code>&amp;</code>
+          (ampersand symbol), field names and values are separated by
+          <code>=</code> (equality sign). Any spaces are considered to be a part
+          of the name or value.
+          Example: <code>hobbit#gender=male&amp;feet=large</code>
+        </li>
+        <li>
+          Dictionary entries may use sentence placeholders:
+          <code>{Ruler} of {Planet}</code>. Each entry is considered
+          to be an independent sentence within the same context
+          as far as the templates are concerned (i.e. capture references work
+          only within one entry, but the context is shared with the whole
+          greater sentence).
+        </li>
+        <li>
+          The entry metadata may also use the placeholders in the value part.
+          Keys may not be placeholders. Each value is considered to be
+          a separate sentence within the same context as well.
+          <code>{Ruler>title} of {Planet}#title={!title}</code>
+        </li>
+        <li>
+          There is a special dictionary entry metadata field,
+          <code>weight</code>, which controls the probability weight for this
+          entry to be selected during the generation. Entries with weights
+          less than or equal to zero are excluded from the dictionary.
+          <i>Entries that already appeared in the current greater sentence
+          are also excluded from the dictionary until every entry in the
+          dictionary will make an appearance (after this the process repeats).
+          </i>
+        </li>
+        <li>
+          You may use in-place dictionaries: <code>Result: [head^tails]</code>.
+          This notation is equivalent to <code>Result: {random_name}</code>,
+          where <code>random_name</code> is a dictionary with <code>head</code>
+          and <code>tails</code> entries.
+        </li>
+        <li>
+          You may use <a href="http://mathjs.org/docs/expressions/syntax.html">
+          math.js expressions</a> as follows:
+          <code>{?expression|$variable}</code>.
+          Use any existing dictionary as a scope. Remember to declare any
+          variables you plan to use in your expressions.
+          <br><br>
+          Additional functions: <code>gt(lhs, rhs)</code>,
+          <code>gte(lhs, rhs)</code>, implement <code>&gt;</code> and
+          <code>&ge;</code> operators (needed due to overly simple placeholder
+          syntax). <code>dict(name)</code>, returns a value from the dictionary.
+          <br><br>
+          Example:
+          Dictionary <code>triggers</code>: <code>default#foo=0</code>
+          Sentence: <code>{%triggers>T}{%?foo=foo+1|$T}{=foo|$T}</code>
+        </li>
+      </ol>
+      <h3>Sentence</h3>
+      <ol>
+        <li>
+          A sentence template may be a static string: <code>Sic transit gloria
+          mundi</code>.
+        </li>
+        <li>
+          A sentence template may contain any number of placeholders: <code>
+          There was a {race}</code>. The generator will fill the placeholders width
+          the strings from the dictionaries and other values, as described below.
+          If you see placeholders in the output, it means that either you
+          mis-configured the generator (perhaps there is a typo in the dictionary
+          name), or there is a bug somewhere.
+        </li>
+        <li>
+          The simplest placeholder is a dictionary name: <code>
+          There was a {race}</code>. It is replaced with a randomly selected
+          entry from a corresponding dictionary. <code>There was a hobbit</code>.
+        </li>
+        <li>
+          Dictionary names (as any other placeholder data) are not case-sensitive.
+          If the first letter of a name is capitalized, then the result is
+          capitalized as well. <code>There was a {race}. {Race} was friendly.</code>
+          &rarr; <code>There was a hobbit. Ork was friendly.</code>.
+        </li>
+        <li>
+          You may use functions to modify the placeholder value. The syntax is
+          <code>{function|placeholder}</code>: <code>There was {a|race}.</code>.
+        </li>
+        <li>
+          If first letter of a function name is capitalized, its result is also
+          suitably capitalized. <code>{A|race}</code> &rarr; <code>A hobbit</code>.
+          You may capitalize placeholder too: <code>{A|Race}</code> &rarr;
+          <code>A Hobbit</code>, <code>{a|Race}</code> &rarr; <code>a Hobbit</code>.
+        </li>
+        <li>
+          You may reference a placeholder value in a function too:
+          <code>There was {a|race>r}. {A|$r} was friendly.</code>
+        </li>
+        <li>
+          Simplest function is <code>a</code>, which chooses which
+          form of indefinite article to use (<code>an</code> if first word in
+          the value starts with a vowel, <code>a</code> otherwise).
+          <code>There was {a|race}.</code> &rarr; <code>There was a hobbit</code>,
+          <code>There was <b>an</b> ork</code>. You may configure an exception for
+          a given dictionary entry by using <code>a</code> metadata field
+          in the entry: <code>honest#a=an</code>. Join several
+          metadata fields by <code>&amp;</code>:
+          <code>rose#smell=good&amp;color=red</code>
+        </li>
+        <li>
+          You may access placeholder's value metadata field using the following
+          accessor syntax: <code>{=field|placeholder}</code>.
+          As usual, if the first letter of the field name is capitalized,
+          the result starts with a capital letter.
+          <code>roses#color=red</code> +
+          <code>{Flowers>f} are {=color|$f}.</code> &rarr;
+          <code>Roses are red</code>.
+        </li>
+        <li>
+          If a metadata field is not defined, accessor attempts to define it
+          by picking a random entry from a corresponding dictionary:
+          <ul>
+            <li><code>flowers</code>:
+              <ul>
+                <li><code>roses</code></li>
+                <li><code>violets</code></li>
+              </ul>
+            </li>
+            <li><code>color</code>:
+              <ul>
+                <li><code>red</code></li>
+                <li><code>blue</code></li>
+              </ul>
+            </li>
+          </ul>
+          <code>{Flowers>f} are {=color|$f}. Yes, {$f} are {=color|$f}</code>
+          &rarr; <code>Roses are red. Yes, roses are red.</code>
+        </li>
+        <li>
+          You may control the context values within the (greater) sentence.
+          To store a value of a given placeholder, use
+          <code>{placeholder>contextKey}</code> syntax. It also will work with
+          functions: <code>{a|placeholder>contextKey}</code> and will store
+          a value returned by the function.
+          To retrieve previously stored value, use
+          <code>{!contextKey}</code> syntax. As usual, if first letter
+          of the key is capitalized, the result is capitalized too.
+          Example:
+          <code>There was a {A|hobbit>race}. {$Race} was friendly</code>
+        </li>
+        <li>
+          Use <code>{>contextKey}</code> to set a context value to empty string.
+        </li>
+        <li>
+          Use <code>{%expression}</code> to suppress output of a placeholder.
+          Context and reference values will still be set.
+        </li>
+        <li>
+          You may insert a newline using <code>{\n}</code>.
+        </li>
+        <li>
+          Use <code>{.|foo}</code> to emit <code>foo</code>. It is useful to
+          set specific values to variables: <code>{%.|foo>bar}</code>.
+        </li>
+      </ol>
+      <h3>Chat</h3>
+      <ol>
+        <li>
+          Chat always begins with a randomly picked Sentence.
+        </li>
+        <li>
+          Chat reply markup format: <code>&lt;dictionary|reply text&gt;</code>.
+          The <code>reply text</code> will be shown to user and if user will
+          pick this reply, a random entry from the <code>dictionary</code>
+          will be shown.
+        </li>
+        <li>
+          If there are no replies available, <code>The End</code> reply
+          will be shown to the user, leading back to the beginning of the chat.
+        </li>
+        <li>
+          To insert chat end reply manually, skip the dictionary name
+          in the reply: <code>&lt;|Auf Wiedersehen!&gt;</code>
+        </li>
+        <li>
+          You may function <code>&lt;</code> to set the dynamic chat replies:
+          <code>{%&lt;|cue-01|Foo&gt;reply-01}{%&gt;reply-02}{replies}</code>,
+          where <code>replies</code> single-entry dictionary may be defined as:
+          <code>{reply-01}{reply-02}</code> This way, <code>reply-01</code>
+          is set to lead to <code>cue-01</code>, and <code>reply-02</code>
+          is disabled. Later on you may use
+          <code>{%&lt;|cue-02|Bar&gt;reply-02}</code> to enable
+          <code>reply-02</code> before the <code>replies</code> is redisplayed.
+          <br><br>
+          In math.js mode there is a helper function, <code>reply()</code>,
+          which can be used like <code>&lt;</code>:
+          <code>{?reply("cue-01|Foo")|$T}</code> will produce
+          <code>&lt;cue-01|Foo&gt;</code>
+        </li>
+      </ol>
+      <h3>Post-Processing Rules</h3>
+      <ol>
+        <li>
+          Each rule consists of a JS regular expression
+          and a replacement string. Consult <code>String.replace()</code>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace"
+          target="_blank">documentation</a> for details.
+        </li>
+      </ol>
+    </div>
+    <h2>Preview</h2>
+    <div style="padding-bottom: 10px;">
+      <button id="preview-refresh">Refresh</button>
+      <label>
+        Size: <input type="text" value="42" id="preview-size">
+      </label>
+      <label>
+        Seed: <input type="text" id="preview-seed">
+      </label>
+      <label>
+        <input type="checkbox" id="preview-overflow">
+        For Twitter
+      </label>
+      <label>
+        <input type="checkbox" id="preview-separator">
+        Separator
+      </label>
+    </div>
+    <div id="preview">
+    </div>
+  </div>
+  <div>
+    <button id="shorten">Short Link</button>
+    <button id="export">Export</button>
+    Import: <input id="import" type="file">
+  </div>
+  <h2>Data</h2>
+  <h3>Dictionaries</h3>
+  <div id="dictionaries">
+  </div>
+  <button class="add">Add</button>
+  <h3>Sentences</h3>
+  <div id="sentences">
+  </div>
+  <button class="add">Add</button>
+  <h3>Post-Processing Rules</h3>
+  <div id="post-processing">
+  </div>
+  <button class="add">Add</button>
+  <div id="meta">
+    <h1>Metadata</h1>
+    <label>Title: <input type="text" id="meta-title"></label>
+    <label>Author: <input type="text" id="meta-author"></label>
+    <label>Description: <textarea  id="meta-description"></textarea></label>
+  </div>
+  <div>
+    <h1>Reset</h1>
+    Use browser's back button to undo.
+    <div>
+      <button id="clear">Clear</button>
+      <button id="reset">Reset to factory settings</button>
+      <button id="reset-to-chat">Reset to chat example</button>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+code {
+  white-space: nowrap;
+  background-color: #f0f0f0;
+  padding: 3px;
+}
+
+.hidden {
+  display: none;
+}
+
+.too-long {
+  color: red;
+  text-decoration: underline;
+}
+
+.error {
+  color: orange;
+}
+
+#meta {
+  margin-top: 15px;
+  width: 50%;
+  align-content: right;
+}
+
+#meta label {
+  padding-bottom: 5px;
+  display: block;
+}
+
+#meta input,
+#meta textarea {
+  width: 100%;
+}
+
+#meta textarea {
+  height: 4em;
+}
+
+#sidebar {
+  float: right;
+  display: inline-block;
+  width: 49%;
+  background-color: white;
+}
+
+#preview > div {
+  padding: 3px;
+  white-space: pre-line;
+  margin-left: 1em;
+  position: relative;
+}
+
+#preview > div:nth-child(2n) {
+  background-color: #f0f0f0;
+}
+
+#dictionaries,
+#sentences {
+  margin-bottom: 10px;
+}
+
+#dictionaries > div,
+#sentences > div {
+  padding: 10px;
+}
+
+#dictionaries > div:nth-child(2n),
+#sentences > div:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+#dictionaries > div > input,
+#dictionaries > div > textarea,
+#sentences > div > textarea {
+  display: block;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+#dictionaries > div > textarea {
+  height: 100px;
+}
+
+#sentences > div > textarea {
+  height: 100px;
+}
+
+hr {
+  width: 66%;
+  border: 0;
+  border-top: 1px solid black;
+  margin-top: 1.75em;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+hr:after {
+  content: '\2766';
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.25em;
+  padding: 0 0.25em;
+  background: white;
+}
+
+#chat {
+  background-color: #e0f0e0;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+#chat .replies {
+  margin-top: 1em;
+}
+
+#chat .replies button {
+  display: block;
+  margin-top: 5px;
+  height: 2em;
+  text-align: left;
+  max-width: 100%;
+}
+
+#chat .replies button::first-letter {
+  text-transform: capitalize;
+}
+
+#chat .cue {
+  white-space: pre-line;
+}
+
+#hamburger {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: white;
+  padding: 5px;
+  margin-right: 10px;
+  z-index: 9999;
+}
+
+#hamburger-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  text-align: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#hamburger-menu {
+  user-select: none;
+  background-color: #f0f0f0;
+  padding: 5px;
+  overflow-y: scroll;
+  max-height: 90vh;
+}
+
+#hamburger-menu > div {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  cursor: pointer;
+  font-size: 14pt;
+}
+
+#hamburger-menu > div:hover {
+  background-color: #e0e0e0;
+}
