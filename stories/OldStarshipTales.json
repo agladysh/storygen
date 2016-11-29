@@ -1,0 +1,712 @@
+{
+  "version": "storygen-0.0.3",
+  "payload": {
+    "meta": {
+      "title": "Old starship tales",
+      "author": "Generator Author @twitter",
+      "description": "Generator Description"
+    },
+    "preview": {
+      "seed": "kazrugez",
+      "size": 42,
+      "overflow": false,
+      "separator": true
+    },
+    "dictionaries": {
+      "i_intro_passenger": [
+        {
+          "value": "we were giving a ride to some passenger. He was a [curious^peculiar^suspicious^weird] [man^humanoid^android] – [well-dressed^awfully dressed, in rags, you could say], [silent^muttering^spinning tales] all the time, and in his eyes – [plain fear^horror, never leaving them^as if half the universe were reflected in them^like you could see the stars and galaxies there]. Well, as we were closing with the [space station^planet] he needed, he came forward and told us: {i_intro_passenger_payment}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "we were giving a ride to [two^a pair of] [weird^unusual] passengers. One was youngish, and the other one [oldish^pretty darn old]. They were [whispering^looking at each other silently^moaning that they didn’t find the robot they were looking for^discussed their postal business] all the time. Well, eventually we were closing to their destination, and our captain started talking about fare. And then the [older^younger] passenger came forward and said: {i_intro_passenger_payment}",
+          "meta": {}
+        }
+      ],
+      "i_intro_sos": [
+        {
+          "value": "we [got^caught^detected] an SOS from the nearest star system. We [went there as soon as we could^flew there^took a course there] and [arrived in two days^got there in a half-hour^]. Well, [what do we see^lookie here] – {i_intro_sos_2}",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "i_intro_sw": [
+        {
+          "value": "{i_intro_passenger}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{i_intro_sos}",
+          "meta": {}
+        },
+        {
+          "value": "{i_intro_descov}",
+          "meta": {}
+        }
+      ],
+      "i_intro_descov": [
+        {
+          "value": "we [were investigating^discovered^found] a stellar system. {i_intro_descov_2}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "we’ve got our [right^left^main] engine [broken^failing]. Well, we fell out of {$subspace} [near^close to^in the vicinity of] a star. Repairs were pretty [long^difficult], our mechanic was really [tired^exhausted^worn out]. The rest of the crew were [amusing themselves^working too] – they [investigated^studied] the star system. {i_intro_descov_2}",
+          "meta": {}
+        }
+      ],
+      "pers_captain": [
+        {
+          "value": "Osten",
+          "meta": {
+            "fullname": "Captain Osten Sible"
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "Jack",
+          "meta": {
+            "fullname": "Captain Jack Spacearrow"
+          }
+        },
+        {
+          "value": "Kenny",
+          "meta": {
+            "fullname": "Captain Kenny"
+          }
+        },
+        {
+          "value": "Robin",
+          "meta": {
+            "fullname": "Captain Robin Brave (of course he was not so brave as Captain Kenny or Captain Jack, but he was slightly more brave than Captain Osten Sible – well, ostensibly so, at least)"
+          }
+        },
+        {
+          "value": "Keen",
+          "meta": {
+            "fullname": "Commodore Keen"
+          }
+        }
+      ],
+      "i_intro_sos_2": [
+        {
+          "value": "the signal was coming from a spacecraft, all punctured by meteorites. Well, we flew up close to it and docked. The crew have donned the spacesuits and went to inspect the spaceship, look for some survivors. {I_intro_sos_3}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "the signal was coming from the nearest planet, and what was sitting on the planet if not a crashed spaceship. Our captain sent half a crew in a landing module to inspect the spaceship, and maybe to help, if they happened to find someone, that is. {i_intro_sos_3}",
+          "meta": {}
+        },
+        {
+          "value": "the signal was coming from the only inhabited planet. Well, actually, it had been an inhabited planet beforehand. Some sort of accident had happened there, half the planet was simply gone. [And the atmosphere went puff, just like that.^And the atmosphere was now full of poisonous smoke.] Still, our crew decided to land and inspect the building the signal was coming from. It turned out to be some sort of a lab, all its doors and windows could be closed by metal shields tighter than anything, and that's why they had time to send their SOS. {i_intro_sos_3}",
+          "meta": {}
+        }
+      ],
+      "i_intro_descov_2": [
+        {
+          "value": "In it we discovered one very [peculiar^weird] [planet^moon with its own atmosphere].{i_intro_descov_3}",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "i_intro_descov_3": [
+        {
+          "value": "There were natives on it, and unusual ones – we’ve never seen their like before. [Three-armed, three-fingered, and jumping around like frogs ^Slow-walking, liked to spread their tentacles in the air, like the branches of a tree, and just stand there and rustle with each other]. We managed to learn their language, though it wasn’t easy at all. But some of their [folktales^legends] got our captain quite interested. That’s what they told:{%z_quotin>quotin}{%z_quotout>quotout}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "There were ruins of ancient buildings on it, as if an advanced civilization lived here, but then just disappeared one day. Not a soul remained. Our [captain ^ ship doctor ^ engineer ^ radio operator], who was very interested in all kinds of ancient civilizations, said it was the construction of the Great Old Ones, who existed almost before the Big Bang. But, and that’s important, not the [Old ^ Ancient] Great Old Ones, nor the[Terrible ^ Greatest] Great Old Ones from the [North ^ South] Pole of the Galaxy either, but the plain old Great Old Ones. All these Old Ones have gone somewhere a long time ago, but still they are very different, and should not be mixed up, and everybody who doesn’t know anything about them should just [shut up ^ keep their mouth shut] while the experts are talking. Anyway, our knowledgeable guy managed to find records of some sort of Old Ones in the ruins. He translated some of these records. Here is what was in them:{%z_quotin>quotin}{%z_quotout>quotout}",
+          "meta": {}
+        },
+        {
+          "value": "There was an ancient starship on it, probably crashed there. And the locals were the descendants of the crew, only they’ve gone completely feral. They still could talk, but quite illegibly, and it was a hard work learning to speak with them. But when we established the communication, why, they’ve told us a lot of interesting stuff. One story in particular piqued our interest. Here’s what it said:{%z_quotin>quotin}{%z_quotout>quotout}",
+          "meta": {}
+        },
+        {
+          "value": "There was an ancient starship on it, probably crashed there. And the locals were the descendants of the crew, only they’ve gone completely feral. They still could talk, but quite illegibly, and it was a hard work learning to speak with them. But when we established the communication, it turned out they all wanted to leave and live their lives like their ancestors, in a civilized manner, growing meat directly in the refrigerator instead of chasing it through the forests and swamps. Well, we had to double up and take them aboard. We found a planet to their taste, and then, just as we were approaching it, their leader came forward and said: {i_intro_passenger_payment}",
+          "meta": {}
+        }
+      ],
+      "i_intro_passenger_payment": [
+        {
+          "value": "{%z_ii_coord_pass>ii_coord}\n{\\n}– {i_intro_passenger_payment_1}\n{i_intro_passenger_payment_captansw}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "i_intro_sos_3": [
+        {
+          "value": "Nobody survived. But the log, among other stuff, had one very interesting record – here’s what it said:{%z_quotin>quotin}{%z_quotout>quotout}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "There were several survivors. We took them on board, treated them as best we could, and brought them to the nearest inhabited planet. Just as we were going into the orbit, one of them came forward and said: {i_intro_passenger_payment}",
+          "meta": {}
+        }
+      ],
+      "i_intro_passenger_payment_captansw": [
+        {
+          "value": "– What do you mean, you don’t have money?! – said the captain. – I don’t work for free! Perhaps I could sell you into slavery? {i_intro_passenger_payment_fin1}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "– How so?! – responded the captain. – That's a shame! What am I to do with you now – it would be stupid to bring you back, wouldn’t it? {i_intro_passenger_payment_fin1}",
+          "meta": {}
+        },
+        {
+          "value": "– Well, if that’s the way it is, – said the captain. – Go in peace, then. {i_intro_passenger_payment_fin1}",
+          "meta": {}
+        },
+        {
+          "value": "– Well, it’s not a problem – responded the captain, – you’ll just work for a[year^week^month] [stoking our nuclear boiler^loading cargo] and we’ll be even. {i_intro_passenger_payment_fin1}",
+          "meta": {}
+        },
+        {
+          "value": "Our captain slowly stood up from his chair then and began to sing an ancient song: {\\n}“Punch, brothers, punch with care! {\\n} Punch in the presence of the passenjare!!!” {i_intro_passenger_payment_fin2}",
+          "meta": {}
+        }
+      ],
+      "i_intro_passenger_payment_1": [
+        {
+          "value": "I have no money to pay for your kindness and help because I’ve lost my bank card, and there’s nothing I could pay you with!",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "I'd like to express my gratitude to you, but I wouldn’t want to insult you by offering you [filthy lucre^contemptible financial transactions]. And, anyway, I don’t have [neither money nor jewelry^any money].",
+          "meta": {}
+        },
+        {
+          "value": "Thanks for the ride! They say that virtue is its own reward, and your good deed was quite virtuous indeed. And I’m all out of money anyway.",
+          "meta": {}
+        }
+      ],
+      "ii_somewhere_place": [
+        {
+          "value": "Amidst the highest mountains, in the deepest cave, {=fullname|treasure}. And only the worthiest hero can obtain this wondrous treasure.",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "There’s a magical place on it, which was created long ago by the Great-Great Old Ones. Whoever will be there, will find the most wonderful gift. {=fullname|w_force}",
+          "meta": {}
+        },
+        {
+          "value": "On this planet there’s the best and fairest country in the Universe, all its people are happy and extremely friendly, and the laws are unusually kind to the citizens and outsiders as well. And beautiful music sounds everywhere in this country. And they give spaceship fuel away for free, only no one needs it because nobody wants to leave the planet.",
+          "meta": {}
+        }
+      ],
+      "treasure": [
+        {
+          "value": "treasure",
+          "meta": {
+            "fullname": "the great treasure is hidden, such that no one seen its likeness before"
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "artifacts",
+          "meta": {
+            "fullname": "there are unknown artifacts of an ancient civilization"
+          }
+        },
+        {
+          "value": "library",
+          "meta": {
+            "fullname": "there is a hidden library with secret knowledge about the entire Universe"
+          }
+        },
+        {
+          "value": "computer",
+          "meta": {
+            "fullname": "there is a great computer, which knows the answers to all the questions in existence"
+          }
+        },
+        {
+          "value": "weapon",
+          "meta": {
+            "fullname": "a great weapon of a vanished ancient civilization is hidden there"
+          }
+        },
+        {
+          "value": "plasmagun",
+          "meta": {
+            "fullname": "a quark-gluon plasmagun of extraordinary strength is hidden there"
+          }
+        }
+      ],
+      "w_force": [
+        {
+          "value": "telepathy",
+          "meta": {
+            "fullname": "He’ll begin to feel the thoughts of others and see the most secret desires of all."
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "trade",
+          "meta": {
+            "fullname": "He’ll become able to find out the prices for different commodities near any star he wishes, and always make deals with a profit."
+          }
+        },
+        {
+          "value": "invulnerability",
+          "meta": {
+            "fullname": "Until he returns to this place, far off yet is his doom, and not by the hand or tentacle of humanoid will he fall."
+          }
+        }
+      ],
+      "z_ii_coord": [
+        {
+          "value": "The coordinates of the lost world are [attached ^ specified].",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "z_ii_coord_pass": [
+        {
+          "value": "I do know where this lost world is, [I cherish a set of its coordinates ^ I'll give you a trusty stellar navigator with directions already entered ^I'll show you on the map]. You, Captain, are a [noble ^ risk-loving ^ fortune-seeking ^ curious ^ greedy] man, so it’s for you to fly there.",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "i_intro_passenger_payment_fin1": [
+        {
+          "value": "{\\n}– [Wait^Wait a minute^Don’t be so hasty]! [Listen to what I’ll tell you!^I'll tell you a story as a token of my gratitude! Listen closely and don’t interrupt!] {\\n} And here’s what he told us:",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "i_intro_passenger_payment_fin2": [
+        {
+          "value": "{\\n}He [became scared^didn’t even blink]. So he said:{i_intro_passenger_payment_fin1}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{\\n}And right away he started [screaming^moaning]: {\\n} – No! [Please don’t!^Stop it!] Not these merciless rhymes again! [Wait^Wait a minute^Don’t be so hasty]! [Listen to me!^I'll tell you a story! Listen closely and don’t interrupt!]",
+          "meta": {}
+        }
+      ],
+      "ii_somewhere_0": [
+        {
+          "value": "{$quotin}[A black shadow fell across the Universe.^Darkness thickened over the stars and galaxies.^Dark force moves from the edge of the Universe.^The horrific events are transpiring in the Universe.^Hear ye! Hear ye!] {ii_somewhere_badguy>badgue_var} [Beware^Watch out for] [this danger^this terrible calamity^this universal evil] and don’t try to be heroes in vain, or else [you’ll lose your heads before your time^you’ll lose both your starship and your lives^the world will lose another brave adventurers].{$quotout}{%z_path_badguy>pathbegin}{%z_badguy_battle>battle}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{$quotin}[Far away from here^Somewhere in the vastness of the infinite cosmos^Somewhere on the edge of the Universe, where you can see the stars and galaxies only from one side^Not so far from here] there is a wonderful planet. {Ii_somewhere_place} {\\n}Alas, [it’s unknown^nobody knows] how to find this planet. It is cunningly hidden from the radars of men. It doesn’t appear on any map, nor in any database. It is only known that there’s a lost world in one globular cluster, and on this world there’s a Gate of the Stars, leading to a wonderful planet. However, one cannot simply pass into this Gate – {ii_somewhere_plguardian>someplace_var}{$quotout} {$ii_coord}{%z_path_tresure>pathbegin}{%z_guardian_battle>battle}",
+          "meta": {}
+        }
+      ],
+      "ii_somewhere_badguy": [
+        {
+          "value": "The Great Deep-Space Ones and their leader have awakened from thousand-year sleep and are flying between galaxies again on their huge, fast spacecraft, that looks like an ugly asteroid. [The evil forces are leading them^Dark energy feeds them], and they do not like other forms of life, which dart hither and yon on their spaceships right under the Great Deep-Space Ones’ noses. Therefore, they are pushing the galaxies apart, and drag the stars away from one another. And the Universe expands because of them, and space flights become harder and longer. And there is no power that could stop the Deep-Space Ones.",
+          "meta": {
+            "mainbattle": "{iv_deeponse}"
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "A horrible space pirate Dark Shader, called “Dark” because he likes to attack from the darkness, from the dark side of a moon, conquers galaxies with his henchmen one by one. He already enslaved 1/10000000000 of all existing galaxies. His malice can be seen thousands of light years away. He sometimes blows stars up just for fun – to play a game of Bubbles. No one can stop him – neither by force nor by cunning. And he has sunk countless ships in the {$subspace}!",
+          "meta": {
+            "mainbattle": "{iv_darksh}"
+          }
+        },
+        {
+          "value": "There appeared a self-building spaceship somewhere in space, designed in the ancient T'xassian Empire. Once it was the biggest empire in the Universe. It designed beautiful spaceships and created the most intelligent AI. Once the Empire’s scientists decided to build the best spaceship ever, which wouldn’t fear neither meteorites nor black holes. It would be able to repair itself, or rebuild itself and adapt to any environment. And they created the best Artificial Intelligence for the ship. But something went wrong, [there was an error in the program^perhaps, the chief programmer’s cat walked across the keyboard]. And the AI decided that the spaceship must become not the best in the Universe, but the biggest. He started to fly around, looting the planets and embedding them in the spaceship. And later the AI started to blow up the stars, in order to obtain the needed substances out of them. And the spaceship still flies, [destroying the planets along with their inhabitants^ruining the gravitational ecology of the galaxies]. And no one can stop it. Many have tried, but it just became bigger as a result.",
+          "meta": {
+            "mainbattle": "{iv_txstarship}"
+          }
+        },
+        {
+          "value": "There appeared a Dark Lady somewhere in space, called Gala-Drivel. She started her [rule ^ reign] in a dwarf Galaxy. But more and more galaxies are falling under her spell. Even the largest ones, densely populated, are unable to resist. Nebulous are her speeches, and she can turn anything she wants into a gas-dust nebula, simply by a glance of her beautiful eyes. She has littered all the space with that dust, and soon [interstellar flights will cease altogether ^ will be no space to fly]. And all those who fell under her spell cease all their work and only talk with [delight ^ horror] about her darkness and beauty. And if somebody disagrees, [they destroy that person immediately ^ they dismantle that person down to molecules ^ well, ashes to ashes, molecular dust to molecular dust, as they say ^ they make that person sweep the dust in all the Dark Lady’s domains until the end of time].",
+          "meta": {
+            "mainbattle": "{iv_darklady}"
+          }
+        }
+      ],
+      "ii_somewhere_plguardian": [
+        {
+          "value": "a liquid-metal guardian protects them, invulnerable to any weapon. He is awake at day and at night, always watching, always keeping vigil, so that no one would have slipped in the Gates. [Many brave adventurers ^ Whole crowds of poor, suffering people] tried to get past him, but all [perished ^ laid down their lives ^ drowned in the liquid metal].",
+          "meta": {
+            "guardian": "{iv_guard_android}"
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "a [huge red ^ ginormous red ^ blue giant] mechanical [dragon ^ megadragon] protects them, built by the great old master Stardivarius. Said Stardivarius, while certainly great and old, wasn’t any kind of a Great Old One, but was, in fact, a red dwarf. Anyway, the dragon is so fierce and fast that it always deals the first strike, and always successfully protects itself, if someone tries to kill it. Nobody can defeat this dragon. Many [brave adventurers ^ Space Marines] tried, but the dragon [tore them all apart ^ chewed them thoroughly and spat them out].",
+          "meta": {
+            "guardian": "{iv_guard_dragon}"
+          }
+        },
+        {
+          "value": "a security system of the Great Old Ones is installed there. Nobody knows a way to [overcome ^ disable] it – it’s a total mystery. It shoots without warning if you get too close, and the craters from its shots form a solid circle – that's how many people tried to pass there. And nobody has returned.",
+          "meta": {
+            "guardian": "{iv_guard_canon}"
+          }
+        }
+      ],
+      "z_path_badguy": [
+        {
+          "value": "[Such an evil existing in our universe cannot be tolerated! ^ How can we leave such a monstrous evil alone! ^ I cannot let such an evil exist in my universe in good conscience! ^ This evil is not as big as a giant space goat, but still it is pretty evil.] [We must stop the evil before it’s too late ^ If we prevail over the evil, our names will be praised through the ages ^ We'll have to meet this evil and see who prevails]. [Hey, AI ^ O the wisest of all Artificial Intelligences], [how can we get there ^ how can we determine the route there], to meet this evil face to face, and to measure our strength against that of the evil?\n– Well, – I said, – it is simple enough. Let's see where in the Universe the dust and dark matter gather the most, where supernovae explode most often, where the red shift is the strongest – that’s where you’ll need to fly. Here, I have already calculated the route.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "z_path_tresure": [
+        {
+          "value": "[I will reach this wonderful planet, cross my heart! ^ Nothing can stop me on my way to the Star Gate! ^ May this story indeed be true? I’ll have to fly there myself and check!] [I'll get there by any means, nothing will stop me ^ I have never retreated in the face of danger and I won’t start now]. [Hey, AI, our trusty comrade ^ O the greatest of all Artificial Intelligences, may energy always flow in your chips], set a course for the lost world at the specified coordinates.\n– [OK ^ Yes], captain, – I said, – your command is accepted. The course is set.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iii_difficulty_sw": [
+        {
+          "value": "{iii_difficulty_bermud}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{iii_difficulty_blackhole}",
+          "meta": {}
+        },
+        {
+          "value": "{iii_difficulty_crab}",
+          "meta": {}
+        },
+        {
+          "value": "{iii_difficulty_no}",
+          "meta": {}
+        },
+        {
+          "value": "{iii_difficulty_sargas}",
+          "meta": {}
+        }
+      ],
+      "iii_difficulty_no": [
+        {
+          "value": "So we flew, and in a [half a year ^ half hour] we were at our destination.",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "iii_difficulty_sargas": [
+        {
+          "value": "– Wait a minute, we have the Sargasso bog straight ahead. There's a huge pile of space debris and all kinds of stardust lying there. We will not be able to fly there!\n– Do not worry, Captain – I said. – You, and me, and our crew, being afraid of dust and debris – not on your life! And if worst comes to worst, well, you and the crew can put on your spacesuits and go outside into space. You’ll clean me up with vibrobrushes, and we’ll continue on our way.\n\nThey did clean me up with their vibrobrushes – for ten times at least. It was noisy enough to hear at the Outer Rim! {iii_difficulty_sargas_song} Anyway, eventually we reached our destination.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iii_difficulty_crab": [
+        {
+          "value": "So we flew, but alas – our route was laid out near a Giant Enemy Crab Nebula. It almost got us with one giant claw. That was close! We were badly jolted, and I still have a claw scar on my belly. But never mind – we dodged it and flew on. {iii_difficulty_crab_song}",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "iii_difficulty_bermud": [
+        {
+          "value": "– Wait, your route is going right through the Bermuda Tetrahedron! [There’re very bad rumors about it, ^ They say] that [the people are disappearing there right off their spaceships, and sometimes the spaceships themselves disappear too, as if they never existed at all ^ the spirits of dead spaceships are gathering there, and it’s bad luck to meet them].\n– Oh, come on, Captain – I said, – [it’s just rumors. ^ do you seriously believe in these tales? ^ surely you don’t believe it.] And if we take a detour, [we’ll lose half a day ^ we’ll waste a lot of fuel].\n\nSo we flew, but the crew was feeling rather down. {iii_difficulty_bermud_song} We’ve flown through almost the entire tetrahedron, when suddenly we noticed that our [radio operator ^ mechanic] had disappeared. We were calling him, but he never responded. I even wanted to turn around – perhaps he fell overboard somewhere? But the captain forbade it. Anyway, we had found him later. It turned out that the poor fellow was so frightened that he went into the cargo hold, hid in an equipment box, and fell asleep in there.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iii_difficulty_blackhole": [
+        {
+          "value": "So we flew with all the speed we were capable of, right through some sort of galactic backwater. We didn’t even notice in time a deep black hole, right on our route. Probably the road workers forgot to patch it up. Our [right ^ left] engine got into it, and we wasted half a day on the roadside, replacing it with a spare one. But after that ordeal was over, we got to our destination just in two hours.",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "iii_difficulty_bermud_song": [
+        {
+          "value": " ",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "In order to cheer up the crew, I started singing an old song: {\\n} \"... We are all just prisoners here {\\n} Of our own device ...\" {\\n} But they became even more scared for some reason.",
+          "meta": {}
+        }
+      ],
+      "iii_difficulty_crab_song": [
+        {
+          "value": " ",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "I started singing my favorite song: {\\n}\"I am a [starship ^ spaceship] {\\n} And [I am^my systems are] OK {\\n} I fly all light night {\\n} And I fly all light day. \"{\\n} But the captain told me to shut up, and we kept silent the rest of the way.",
+          "meta": {}
+        }
+      ],
+      "iii_difficulty_sargas_song": [
+        {
+          "value": " ",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "In order to cheer them up, I sung them a song, which I’ve heard when we were in the New Ireland star cluster: {\\n}\"... Now in this bog there was a starship.{\\n}A rare ship. A rattling ship.{\\n}Ship in the bog{\\n}And the bog down in the valley-o...\"{\\n} But they only became enraged.",
+          "meta": {}
+        }
+      ],
+      "iv_darksh": [
+        {
+          "value": "So, we arrived at the place – and there were a lot of spaceships around, each one armed either with a laser cannon, or with a disintegrator, or with some other terrible weapon. And they all were ready to aim at us. So the captain got on the air and said:\n– Where is the famous pirate Dark Shader? I want to fight him in a fair fight, measure my strength against his.\n– We're everywhere! – many voices answered. – I'm not your [ordinary ^ run-of-the-mill ^ garden-variety] pirate. I am a progressive, digital space pirate. I have made digital copies of my identity and my starship, and now I creep into all the spaceships flying past, by the Internet, wirelessly, and take control. And I’ll capture your starship in no time!\n\nThe captain frowned and said to me:\n– This is bad. This threat is extremely serious. You are an outstanding AI and you would easily repel a dozen attacks or two, but there’re just too many of them out there. So this is how we are going to play it. We’ll make digital copies of ourselves and meet digital copies of Dark Shader directly in virtual reality.\n\nAnd so we did. We made many digital copies of ourselves and joined the pirate army in battle in virtual reality. Digital lasers sparkled, digital disintegrators went bang, digital sparks flied in all directions. And no side could beat the other side.\n– That won’t do, – our captains said, – this way we will fight until the end of the Universe. This virtual world is a copy of the real one, so it must have a virtual reality of its own, a virtual virtual reality, so to speak. We'll make our digital copies in it, and with them seize control of their virtual spaceships, the same way they're trying to take our real spaceships through the usual virtual reality.\n\nAnd so we did. We got into their digital spaceships, seized control, and quickly were victorious.\n– Game over, – we said to them, – you’ve lost, give up!\n– You’ve defeated me by my own weapon, – answered the digital pirates. – But don’t celebrate just yet! I'll turn off the digital power circuit breakers, and you’ll disappear forever!\n\nIndeed, the stars suddenly started going out without any fuss. But then they lit up again – I guess our captains managed to interfere in time, and Dark Shaders couldn’t turn off the power completely. But when the stars lit up again, it turned out that the Universe has changed a little bit. And this story has also changed with it, and became a little different...\n",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_txstarship": [
+        {
+          "value": "So, we arrived, and saw a starship flying from a star to a star. But it was not an ordinary starship – it was so huge and massive, that the light rays were bending near it, so that it looked all distorted, like in a funhouse mirror. And the starship sent me a signal.\n– Hey you, small stuff, back off and get out of my way! Or else I’ll flatten you, and then strip you into spare parts, even though you’re obviously not of much use, not enough even to justify the energy cost.\nIt kinda hurt me, so I said to him:\n– Hey yourself, you [clumsy oaf ^ fatso]! So, you’ve eaten so much, you can’t even make a small turn? Okay, I’ll let you have the way, since you only know how to fly in a straight line!\n– I am a big and attractive person, – he said, – and every day and in every way I become even more big and attractive. If you don’t stop with your [stupid ^ insolent] speech, you will get into my gravitational claws, and then abandon all hope to break out of them!\n– Ooh, – I said, – I’m shaking! You know, I once fell into a black hole, and managed to get out even from there! I have a couple of special maneuvers under my belt, such that you never in a million years grab me.\n\nNow I was feeling that it got really angry, and tried to drag me in. And in that moment the captain said:\n– Gentlemen, don’t quarrel! To stand in the way of such a respectable and impressively sizeable starship really is an extremely foolish thing to do.\n– Who’s there butting in our conversation? – asked the T'xassian spaceship. – Is it your [pokémon^ tamagotchi]? You have a good one, then, really polite. Perhaps I will take you both with me, so you’ll see how I’m getting bigger and bigger – because this is my destiny.\n– Oh really?! – said the captain, and kicked my control panel, hinting me to be silent. – Truly, it is the most grandiose destiny of all that I have ever heard about! {iv_txstarship_sw}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_darklady": [
+        {
+          "value": "When we reached our destination, our captain immediately turned on the radio and said:\n– [I urgently need an audience with the Dark Lady Gala-Drivel. I must tell her something important! ^ I've got important information for Her Darkness, and I must tell it to her face to face!]\n– [Fat chance^Certainly not]! – the radio answered. – You must sign up for her audience at least a year in advance. A galactic year, not a common one. What, you can [tell her ^ report] something so very important that she abandons everything just to speak with you?\n– Well, I know somebody who [does not consider her neither dark nor beautiful^believes that her reign brings only harm, and benefits no one]! [I want to tell her about it in detail^I want to discuss it with her].\n– Horrid! – they said. – You must be brought to our Lady right this instant! We have already sent you an escort of honor.\n\nIndeed, even as the captain climbed into the landing module and undocked, winged ships arrived and escorted him straight to the palace. The captain disembarked and went into the palace – and who but Gala-Drivel herself, [quite angry ^ almost in tears], walked hastily to him – apparently she’d already got the report from her faithful servants.\n– Tell me, – she said, – who doesn’t consider me neither dark nor beautiful? Who thinks that I am unable to rule the galaxies? I’ll order this very moment to catch them, put them in chains, and bring them to me. And then I’ll turn them into the finest dust, right with the chains. But first I ... then again, it is better if you don’t know this.\n{iv_darklady_sw}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "z_guardian_battle": [
+        {
+          "value": "{=guardian|$someplace_var}{\\n}{$final}",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "z_badguy_battle": [
+        {
+          "value": "{=mainbattle|$badgue_var}",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "iv_deeponse": [
+        {
+          "value": "So, we arrived at the place – and there’s a huge spaceship, looking for all the world like an ugly asteroid, hanging around right in the center of the galaxy, clearly doing something wrong. Perhaps it was expanding the black hole, or maybe sizing it up for stealing. Our captain scratched his head and said:\n– Nope, our ship will not be enough here. We’ll need a spacefleet. We'll have to fly all around the galaxy, call up some volunteers.\nWell, we flew around, visiting many star systems and clusters, and gathered ourselves a squadron, at least a hundred starships strong. Our squadron stealthily gathered to the center of the galaxy from all sides, the captain turned on the radio – and said:\n– Surrender, you are surrounded, resistance is futile! You have the right to remain silent. Anything you say may be used against you.\nThe ugly asteroid started shaking with fear. They responded:\n– How so, what right do you have to arrest us? We never violated laws of nature, never even tampered with the uniformity and isotropy of space! Why do you aim the muzzles of your disintegrators at us?\n– You are pushing the galaxies apart and dragging the stars away from one another! We’ve caught you in the act at the scene of the crime.\n– No, – they said, – it’s a vile slander! On the contrary, we are mending the space-time matter, if it starts to rend somewhere from excessive movement of the stars and galaxies. We are saving the Universe – it could leak into a hole like this in its entirety.\n{iv_deeponse_sw}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_guard_android": [
+        {
+          "value": "When we got to the place, we went into orbit. The captain climbed into the landing module and flew to the Star Gate, while his second-in-command remained in his stead. Just then very strong solar wind had risen, that could even knock somebody off their feet. Well, we thought, maybe our captain will slip through and they won’t smell him right away. But it was not to be.\n\nThe captain landed, climbed out of the landing module, and got ready to run to the Gate, but alas – the guardian was already there. It was approaching, looking like an android in a coat of mirror paint, and was starting to go for its {iv_guard_android_weapon>weapon}.\n– Wait a minute! – shouted the captain. – We be of one metal, ye and I!\n– What? – shouted back the guardian. – I can’t hear you, the wind is too strong.\n– I say, we be of one metal, ye and I! – shouted the captain again. – Don’t {=action|$weapon} me!\n– What do you say? You want to die, so I should {=action|$weapon} you? Wait, I'll come closer.\n\nIt came closer and asked:\n– So, what is it you were saying?\n– I say, we be of one metal, ye and I, – repeated the captain, – and that’s why you shouldn’t {=action|$weapon} me.\n– Is that so? – said the guardian, clearly surprised. – And what I should do with you, then? And anyway, you don’t look like me – I am quite sleek and mirror-like, if I do say so myself, while you are somewhat pale.\n– [Well, you have your talents, you can turn into anybody you want. ^ Well, I've studied the humanoid ways of life, so I’ve turned into one myself. You also can transform into anybody you want, I presume.] You can turn into me, you can turn into [monster ^ dragon ^ beast] from the planet [Earth ^ LV-1234 ^ Protactinium], or you can turn into something small and harmless.\n– That's right, look.\n\nThe guardian became iridescent, and suddenly – bang – it was like our captain stood right in front of himself.\n– How ‘s that, – said the guardian, – impressive? Look further!\nAnd it turned into a terrible monster, which none of us has ever seen before. Our captain must have [been beside himself with fear ^ nearly lost his mind in fear].\n– Oh yeah, – said the guardian. – Look further!\n\nAnd it turned into a bar of chocolate. The chocolate bar just lay there, and looked so incredibly tasty, just asking to be gobbled up. The captain grabbed the chocolate, but no such luck – it turned out the bar weighed at least a hundred kilos, no less. The law of conservation of mass in action, you see.\n\nMeanwhile the guardian transformed back into the mirror android.\n– [^ How do you like it?] I can transform into anything I want, – said the guardian. – There’s only one thing I can’t turn into – myself.\n– Why so? – asked the captain.\n– I transformed so many times already, I’ve forgotten how I was looking at the start.\n– Wait a minute. But robots never forget anything.\n– You’re a robot! – said the guardian, clearly offended, and even went for its {$weapon} again. – I’m a shapeshifter! I shift shapes, hence the name!\n– OK, wait, calm down. Let me check whether you are a robot or not, I know a test.\n– Okay, give me your test.\n– Look, – said the captain, – can you read what is written here?\nAnd he took a piece of paper, wrote something on it, and gave it to the guardian.\n{iv_guard_android_sw}{%v_portal_common_final>final}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_guard_dragon": [
+        {
+          "value": "So, we arrived, the captain climbed into the landing module and flew to the Gate. He landed and got out – and, right on cue, the dragon was there, almost like out of thin air. It was running at the captain, its jaws agape.\n– Stop! – shouted the captain. – I bet that however fast you are, you can’t catch up with me, no matter how hard you try.\nDragon stopped in surprise and sat down on its tail.\n– [How so^Why is that]? – asked the dragon.\n– It’s simple! Judge for yourself. There’s some distance between us now. While you are covering it, I’ll walk a part of the road to the Star Gate. Then you’ll have to run again, to catch up to me. And while you’re running to where I was, I’ll again advance a bit towards the Gate. And then it’ll repeat again, and again. So, you’ll never catch me!\n– Oh, – said the dragon, – it’s true, indeed! You are rather quick, aren’t you? However, you’ll never pass into the Gate.\n– Why is that?\n– Well, let’s say you’ll pass half the distance to the Gate. Then half of the distance will remain. But to cover the rest of the distance, you’ll first have to cover half of it. And then half of the remaining distance. And so you’ll be walking these halves forever, without end, and never reach the Gate, however close you’ll get to it!\n– Well, – said the captain, – you’re right! However, you’ve forgotten the quantum uncertainty principle. I always have a chance to appear right in the Gate, just like that, for no reason. And the closer I get to the Gate, the higher the probability of that.\n– Yeah, – said the dragon, – but by the same principle you may appear right in my claws, and also without any reason!\n– Well, let’s test it and compare our luck, then!\n– Let’s!\n{%v_dragon_final>final}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_guard_canon": [
+        {
+          "value": "So, we arrived at the place and went into orbit. For a long time our captain examined something on the surface in the orbital telescope. After that he went into his cabin and took his lightsaber and mirror shield, both ancient weapons of the legendary space knights, which he bought cheaply at a flea market. Then he got into the landing module and went to the Gate.\n\nHe landed, readied the mirror shield, and went to the Star Gate on foot. When he reached the craters from the laser shots, the defense system shot at him with its laser cannon. But the laser beam hit the mirror shield directly and reflected right back at the cannon. The cannon exploded in colorful fireworks, and the captain went on.\n\nThen he heard a voice, loud and booming, such that it probably could be heard everywhere on the planet:\n– Well done. Go to the next level – the Plasma Cannon.\nThe captain drew his lightsaber, switched it on, and put the lightsaber in front of himself. And right in time – the plasma cannon fired, the plasma lump struck the lightsaber blade directly, rotated around it in its magnetic field a couple of times, and flew back to the gun. The only thing left of the gun was a small lake of molten metal.\n\nAgain the captain heard the voice:\n– Well done! Go to the next level – the Antimatter Cannon.\nAnd again, some sort of cannon took aim at the captain.\n– Hey, wait a minute, – the captain shouted, – I’ve passed two levels already, and haven’t lost a single life! Something must be wrong with your programs. Think about it – the antimatter cannon is called that because it shoots antimatter, right? And the antimatter is called antimatter, because all its properties are opposite to the properties of ordinary matter. Well, then, it’s just silly to aim your antimatter cannon straight at me, like an ordinary-matter cannon! You should aim it directly away from me, and a little down, not up!\n\nIndeed, the cannon turned around 180 degrees, and shot. Nothing was left of the protection system. The only thing remaining was a huge crater.\n– What a depressingly stupid system! – muttered our captain, and went further in the direction of the Star Gate.\n{%v_portal_common_final>final}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_guard_android_weapon": [
+        {
+          "value": "disintegrator",
+          "meta": {
+            "action": "disintegrate"
+          },
+          "delimiter": "\n"
+        },
+        {
+          "value": "annihilator",
+          "meta": {
+            "action": "annihilate"
+          }
+        }
+      ],
+      "iv_guard_android_sw": [
+        {
+          "value": "{iv_guard_android_robot}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{iv_guard_android_notrobot}",
+          "meta": {}
+        }
+      ],
+      "iv_guard_android_robot": [
+        {
+          "value": "The guardian looked at the piece of paper, turning it in its hands this way and that.\n– No, – it said, – negative. The record does not make sense. What is it, like some letters, all uneven and struck through by a double wavy line?\n– Well, how can you not be a robot, – said our captain, – when you are a typical robot? However, okay, here's the last test, look, – and he wrote something on both sides of a blank piece of paper. – Can you tell whether these statements are true or false?\n\nThe guardian took the new piece of paper and read: “On the other side of this paper there’s a true statement.” It flipped the paper over and read: “On the other side of this paper there’s a false statement.” Again he turned the paper, and read again. And again, and again, and again. It turned the paper faster and faster, trying to figure out whether the statements are true or false. Even the wind started to climb from the turning paper.\n\nThe captain looked at it for a bit and ambled to the Star Gate.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_guard_android_notrobot": [
+        {
+          "value": "– It says: “[KBN05^CBMN95PP^GJ85QR2]”. Just some nonsense. Struck through by a double line for some reason.\n– Looks like you're really not a robot. What are you doing here, then?\n– We had a prophecy, you see. It said that whoever will pass through the Star Gate, can change the Universe. We, shapeshifters, don’t want the Universe to change. We like it the way it is. So I sit here and watch, so that no one passes through the Gate. It’s a rotten life, I tell you. Pure torture – never go for a walk, never even take a nap.\n– Well, do you really need such a universe, when, if you can’t even go for a walk in it, can’t take a nap, can’t have a friend or a pet?\n– You are right! – said the guardian. – I don’t need it at all! You were going to go through the Gate, right? Well, you can go, then. I have just one request: if you happen to meet some electric sheep somewhere, bring me one, please. I often dream of such an animal.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "v_portal_common_final": [
+        {
+          "value": "Our captain passed the Star Gate and vanished. We were hanging in orbit waiting for him, waiting there for a few [years ^ months ^ days]. But he never returned. [And what he found on the other side of the Star Gate ^ And whether he’s still alive ^ And where is he now], that I know not. And so we [mourned ^ missed] him, but there was nothing to do. We flew on to the new adventures, but that's another story...",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "Our captain passed the Star Gate. He was gone for several [days ^ weeks ^ months]. Then he came back to us, but he became strange somehow. In his eyes there was fear, or maybe grief. He didn’t answer our questions, just ordered to set the course for a certain distant star. And there he bid us farewell, dressed almost in rags, and landed on the orbital station. So, what happened when he went back and forth through the Star Gate, and where he is now – that I know not. {\\n}{\\n} And we continued to fly across the expanses of the Universe. And there yet another amazing story has happened to us.",
+          "meta": {}
+        },
+        {
+          "value": "Our captain passed the Star Gate. He has returned in a few [days ^ weeks ^ months]. He docked, came on the bridge, and said: “Well, I’ve visited that miraculous planet, and saw how it is there. But I’ve learned that this planet isn’t truly miraculous – that is, compared to another one, of which I learned while there. So, we must start searching for that new planet immediately!” The crew became angry: “What’s that – we passed through half a million galaxies without rest, and now it’s the same thing all over again! We want to visit a bar, or breath a bit of fresh air! You are not our captain anymore!\" “Well, – said the captain, – it’s your loss.” He disembarked on the nearest space station, and went somewhere in search of his planet. And we have appointed a new captain, and flew on. And then another story happened...",
+          "meta": {}
+        }
+      ],
+      "iv_darklady_sw": [
+        {
+          "value": "{iv_darklady_1var}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{iv_darklady_2var}",
+          "meta": {}
+        }
+      ],
+      "iv_darklady_1var": [
+        {
+          "value": "– I do! – said the captain. – Your reign brings only harm, and heaps of dust everywhere. You cannot fly from one star to another for all this dust – you cannot even see the space! Humans don’t want to cooperate with other humanoids. You cannot refuel or repair your starship. And you cannot even buy spare parts. The only thing you hear from everywhere is all this “darkness” and “beauty” stuff! Actually, forget spare parts – you can’t even buy food in a grocery store!\n– Your accusations are absurd as well as monstrous! You will be burned to ashes, and behold the full power of my anger, not necessarily in that order! – answered the Lady. – But because of your courage, seeing as you weren’t afraid to come here, I'll give you a tiny chance to survive. Write me a report of things that are happening in the Universe, and make it 50 thousand words – no less! I’ll give you a [day ^ month]. If your accusations prove to hold at least a grain of truth – I'll spare you, and send you to clean the dust in my palaces. And if they won’t – well, you’ll have only yourself to blame.\n\n{iv_darklady_final}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_darklady_2var": [
+        {
+          "value": "The captain started coughing.\n– Oh, – he said, – you see, your Darkness, I heard that the Great Deep-Space Ones are awakening from their slumber... You see, they’ve slept away the building of your beautiful empire... And, um, you see, they just may find you not dark and beautiful enough... Only through their ignorance, of course...\n– Oh, – the Dark Lady responded. – Those. I should’ve turn them into cosmic dust a long time ago! I just didn’t get around to it yet. Well, now I’ll get on with it right this instant! As for you, for your faithful service I bestow upon you an important mission. Write me a report about all that is happening in the Universe, and make it 50 thousand words – no less! I’ll give you a [day ^ month]. I want to know if everything is OK in my Universe, or whether somebody still thinks that I am not dark or beautiful enough. And if you won’t submit the report in time – well, you’ll have only yourself to blame.\n\n{iv_darklady_final}",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_darklady_final": [
+        {
+          "value": "The captain returned to us, very much in sorrow.\n– By and by, – he said, – I’ll need to write a report on what is happening in the Universe, in 50 thousand words, no less. And the deadline is already quite close.\n– Well, – I said, – that’s not so difficult. I'm an old spaceship, I’ve seen much in my time, and I can tell you a lot of stories. So, Captain, take your [pen^stylus^keyboard] and write it all up. Stay awhile and listen...",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_deeponse_trust": [
+        {
+          "value": "– Really? – asked the captain, surprised. – I’ll have to go to the bottom of this. Have you any proof? I see you're doing something with a black hole here.\n– We are pumping it full of interstellar gas, – they said, – so it becomes heavier and the power of its attraction increases. Then this galaxy won’t fly so fast from the others. And it gives off pretty fireworks. Plus there is another benefit of this – if...\nAt that moment, I guess, one of our crew couldn’t contain themselves and fired their disintegrator. The ugly asteroid exploded and turned into a gas-dust nebula. And the explosion threw us into the black hole – we hardly managed to climb back. And when we did, it turned out we were in another universe. And this story became completely different in that universe...",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_deeponse_nottrust": [
+        {
+          "value": "– I don’t believe you! – said the captain. – Surrender now, while you are still in good shape. Throw all your weapons away into space and slowly move toward the south pole of the galaxy!\n– No, – they answered, – you’ll never take us alive!\nAnd that asteroid of theirs, very big and very ugly, turned out to be much faster than anybody would expect. In a blink of an eye it jumped into the {$subspace} and began to sink into it ever deeper. We rushed to the chase, and I accelerated to quite a speed and went deeper than ever before. But still I didn’t caught up to them. Took a parting shot at them from my laser cannon, though, and damaged their engine.{\\n}They disappeared in the depths of space-time. Later, probably, they collided with a planet, fell on the ocean floor and lay there licking their wounds for a long time.{\\n}And we came out of the {$subspace}, looked around – at it looked not like our universe, but an alien one. I guess we went too deep into the {$subspace} and ended up in a parallel universe. And in the parallel universe this story goes rather different...",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_deeponse_sw": [
+        {
+          "value": "{iv_deeponse_nottrust}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{iv_deeponse_trust}",
+          "meta": {}
+        }
+      ],
+      "iv_txstarship_sw": [
+        {
+          "value": "{iv_txstarship_bog}",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "{iv_txstarship_stargraveyard}",
+          "meta": {}
+        }
+      ],
+      "iv_txstarship_stargraveyard": [
+        {
+          "value": "Incidentally, I’ve just remembered that I know a vast stellar graveyard in the vicinity, it has old stars by the thousand. They are not so hot and dangerous as before, and can serve as an excellent building material for your wonderful hull.\nWhen the starship heard it – it almost started [salivating ^ drooling].\n– Lead me there right this instant! – it said. – I haven’t heard such a good news for a long time. Usually it’s just some gnats, like you, who fly around and try to tickle me, or draw something on me with their lasers, or something. And then they all yell that there’s no need to flatten them.\n– All right. However, there’s a small difficulty – the way to the graveyard is through the portal. And the portal is of a rather small size for such an impressive starship. You wouldn’t go through it, no way! I was, of course, assured that you, being a self-building self-developing starship, are able to turn into any object in the Universe, similar to you in size. And, well, I’m already convinced that that is so. But also I was assured, and that’s something I cannot believe, that you supposedly can turn into even the smallest objects. Like, for example, into a meteorite or a comet. I must tell you the truth, I think it’s quite impossible.\n– Oh, is that so? Impossible, you say? – asked the T'xassian starship. – Come on, look!\n\nAnd at the same moment, right before our eyes, it started to decrease in size, in a rather ingenious way – it looked just like it was turning itself inside out several times. It was becoming smaller and smaller, and the light rays were bending more and more around it, and then it became invisible – turned into a black hole.\nThe trouble was, it forgot to unclamp its gravitational grip. And so we were dragged into the black hole. At the time I managed to unclamp its grip and accelerated, we were already in the black hole – we barely got out. And lo and behold, the Universe has changed somehow. Looks like we’d spent so much time in the black hole – because the time in a black hole slows down – that the universe had already collapsed in a Big Crunch and started to expand again, so that we appeared in the next universe, rather than the one in which we were before. And in the new universe this story became different, like this:",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "iv_txstarship_bog": [
+        {
+          "value": "Incidentally, I’ve just remembered that there is a bog nearby, rare bog, with a lot of debris and all kinds of stardust lying in it. All of this can be an excellent building material for your wonderful hull.\n– Bog, – it said, – well! The big guys like me are not afraid of dust and debris! Show me your bog.\n\nWe brought it to the edge of the bog, and it plunked there with a huge splash and started swallowing dust and debris. Also, dust and debris stick to its outer hull, but it was only happy, because in this way it became even bigger. But not for long it were rejoicing. It moved slower and slower, because dust and debris from the outside hindered it. It tried to shake it off a bit, but nope – you couldn’t clean it off without vibrobrushes.\n\nSo it probably flies through the bog even now, slower and slower, and still swallows dust and garbage. Sometimes we remember it and discuss whether it’ll reach the center of the bog someday.\n\nOnce, when we were discussing it, our captain got really riled up and said:\n– If it have waded even through half a distance to the center of the bog, I’ll eat my cap and become a sailor!\n\nThe crew got into the argument, and the navigator, who had an eye on the captain’s chair himself, offered to fly there and check. And what do you think? That huge starship did travel halfway to the center. The captain, annoyed, went into the cargo hold to chew on his cap, and left the navigator in his stead, which made the navigator rather pleased. But that is another story.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "v_dragon_final": [
+        {
+          "value": "The captain walked half the distance to the Gate, and the dragon came running at the spot where he was before. Then the captain walked half the remaining distance, and the dragon came running and sat on the place where he was before. And again the captain walked half the remaining distance, and the dragon came running and sat on his place...\n\nThey're walking like this even now – the captain still can’t get to the Gate, and the dragon still can’t catch him. And the uncertainty principle hasn’t bring any of them any luck yet. And while our Schrödinger’s captain walks to the Gate, his first assistant serves as a captain in his stead. But that is another story.",
+          "meta": {},
+          "delimiter": "\n\n--8<--\n\n"
+        }
+      ],
+      "z_subspace": [
+        {
+          "value": "subspace",
+          "meta": {},
+          "delimiter": "\n"
+        },
+        {
+          "value": "hyperspace",
+          "meta": {}
+        }
+      ],
+      "z_quotin": [
+        {
+          "value": "“",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ],
+      "z_quotout": [
+        {
+          "value": "”",
+          "meta": {},
+          "delimiter": "\n"
+        }
+      ]
+    },
+    "sentences": [
+      "{%z_ii_coord>ii_coord}{%z_subspace>subspace}{%>quotin}{%>quotout}\n[One day^Once^Long ago^A long time ago in a galaxy far, far away], when [we still were led by^our leader still was^our commander was] {=fullname|pers_captain> capt}, {i_intro_sw}\n\n{ii_somewhere_0}\n\nThe captain [took an interest in ^ was puzzled by ^ was surprised by] the story. He said:\n– {$pathbegin}\n{iii_difficulty_sw}\n\n{$battle}"
+    ],
+    "postprocessing": [
+      {
+        "find": " [ ]+",
+        "replace": " "
+      },
+      {
+        "find": ",[ ]*,",
+        "replace": ","
+      },
+      {
+        "find": " ([,.])",
+        "replace": "$1"
+      }
+    ]
+  }
+}
