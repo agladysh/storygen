@@ -1171,6 +1171,35 @@ var init = function() {
     );
   });
 
+  HTML.query("#export-pdf").addEventListener('click', function() {
+    alert('TODO: Not yet implemented. Upload .tex to cloudconvert.com manually')
+    //window.open('http://latex.aslushnikov.com/compile?text=' + encodeURIComponent(generateLatex(generateDataset())), '_blank');
+    /*
+    var fd = new FormData();
+    fd.append('apikey', 'TODO');
+    fd.append('inputformat', 'tex');
+    fd.append('outputformat', 'pdf');
+    fd.append('wait', 'true');
+    fd.append('download', 'true');
+    fd.append('input', 'raw');
+    fd.append('filename', 'storygen.tex');
+    fd.append('file', generateLatex(generateDataset()));
+    fd.append('save', 'true');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', 'https://api.cloudconvert.com/convert', true);
+    xhr.send(fd);
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        // TODO: Just open a new tab instead.
+        // http://stackoverflow.com/questions/178964/javascript-post-on-form-submit-open-a-new-window
+        saveStringAsFile('storygen.pdf', 'application/pdf', xhr.response);
+      }
+    };
+    */
+  });
+
   HTML.query("#import").addEventListener('change', function(e) {
     var reader = new window.FileReader();
     reader.onload = function(e) {
