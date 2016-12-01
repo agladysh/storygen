@@ -858,7 +858,7 @@ var updatePreview = function() {
     btn.innerText = 'Copy';
     new Clipboard(btn, {
       text: function() {
-        return text;
+        return text.replace(/~/g, '');
       }
     });
   }
