@@ -188,3 +188,7 @@ hr:after {
   font-weight: bold;
   font-size: 2em;
 }
+
+.post-toolbar {
+  padding-top: 1em;
+}

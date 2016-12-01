@@ -8,6 +8,7 @@ var balanced = require('node-balanced');
 var ace = require('brace');
 require('brace/mode/storygen');
 var math = require('mathjs');
+var Clipboard = require('clipboard');
 
 var parseDictionaryEntry = function(entry) {
   if (!entry) {
@@ -850,6 +851,16 @@ var updatePreview = function() {
       highlightStuff(div.add('span'), text.slice(0, 140));
       highlightStuff(div.add('span.too-long'), text.slice(140));
     }
+
+    var toolbar = div.add('div.post-toolbar');
+
+    var btn = toolbar.add('button');
+    btn.innerText = 'Copy';
+    new Clipboard(btn, {
+      text: function() {
+        return text;
+      }
+    });
   }
 
   updateChat();
