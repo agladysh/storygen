@@ -8,7 +8,8 @@
     "replace-scripts:build": "sed -i.bak s/bundle.js/bundle.min.js/g  index.html && rm index.html.bak",
     "start": "webpack && npm run replace-scripts:dev && webpack-dev-server -d --progress --colors && sensible-browser 'http://localhost:8080'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run replace-scripts:build && webpack && uglify -s ./bundle.js -o ./bundle.min.js"
+    "build": "npm run replace-scripts:build && webpack && uglify -s ./bundle.js -o ./bundle.min.js",
+    "deploy": "npm run build && scp index.html bundle.min.js aagg.ru:/srv/www/aagg.ru/upload/nanogenmo2016/"
   },
   "author": "Alexander Gladysh <agladysh@gmail.com>",
   "license": "MIT",
