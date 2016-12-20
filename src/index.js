@@ -838,12 +838,11 @@ var updatePreview = function() {
   clear(preview);
 
   var dataset = generateDataset();
-  for (var i = 0; i < dataset.length; ++i) {
+  dataset.forEach(function(text, i) {
     if (i > 0 && DATA.preview.separator) {
       preview.add('hr');
     }
 
-    var text = dataset[i];
     var div = preview.add('div');
     if (text.length <= 140 || !DATA.preview.overflow) {
       highlightStuff(div.add('span'), text);
@@ -861,7 +860,7 @@ var updatePreview = function() {
         return text.replace(/~/g, '');
       }
     });
-  }
+  });
 
   updateChat();
 
