@@ -159,6 +159,18 @@ handler_self.math.import({
   gte: function(lhs, rhs) {
     return lhs >= rhs;
   },
+  lt: function(lhs, rhs) {
+    return lhs < rhs;
+  },
+  lte: function(lhs, rhs) {
+    return lhs <= rhs;
+  },
+  eq: function(lhs, rhs) {
+    return lhs == rhs;
+  },
+  neq: function(lhs, rhs) {
+    return lhs != rhs;
+  },
   dict: function(param) {
     var result = handlers.random_word.call(
       handler_self, handler_self.sampler, handler_self.dictionaries, param
