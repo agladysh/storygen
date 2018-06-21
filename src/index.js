@@ -17,12 +17,15 @@ var parseDictionaryEntry = function(entry) {
     };
   }
 
+  // Example: elf#a=b / hobbit#he=it / elf#he=she
+  // dishonest#oops=oops!&outcome={outcome_bad}
   var matches = entry.match(/^([^#]+)[#]?(.*)/);
   var meta = { };
   if (matches[2]) {
     matches[2].split("&").forEach(function(match) {
       var param = match.split("=");
       meta[param[0]] = param[1] || "";
+      // Example: "param[0]:  he, param[1]: it, meta: Object { he: "it" }"
     });
   }
   return {
@@ -31,6 +34,7 @@ var parseDictionaryEntry = function(entry) {
   };
 };
 
+// Capitalizes first character text, if ref (placeholder) is upper case
 var maybe_capitalize = function(ref, text) {
   var firstChar = ref.charAt(0);
   if (firstChar !== firstChar.toLocaleLowerCase()) {
@@ -42,10 +46,28 @@ var maybe_capitalize = function(ref, text) {
 
 var handlers = { };
 
+// Return random word from dictionary
 handlers.random_word = function(sampler, dictionaries, param/*, command*/) {
-  if (param.capture) {
+  if (param.capture) { // Capture could be true or false
     return param;
   }
+
+  /* Dictionaries and key example:
+      {…} Dictionaries (main table)
+      "хоббит": Array [ {…}, {…}, {…}, … ]
+      "честный": […]
+      0: Object { value: "честный", meta: {…} }
+      1: Object { value: "нечестный", meta: {…} }
+      length: 2
+      samplerPicks: Array [ 0, 1 ]
+       
+      […] Честный (key)
+      0: Object { value: "честный", meta: {…} }
+      1: Object { value: "нечестный", meta: {…} }
+      length: 2
+      samplerPicks: Array [ 0, 1 ]
+  */
+
   if (typeof param === 'string' || param instanceof String) {
     param = { entry: { value: param }, value: param };
   }
@@ -62,6 +84,7 @@ handlers.random_word = function(sampler, dictionaries, param/*, command*/) {
   };
 };
 
+// Handler for a/an
 handlers.a = function(sampler, dictionaries, param, command) {
   var result = handlers.random_word.call(this, sampler, dictionaries, param);
   if (!result) {
@@ -77,6 +100,7 @@ handlers.a = function(sampler, dictionaries, param, command) {
   return result;
 };
 
+// Handler of metadata fields
 handlers["="] = function(sampler, dictionaries, param, command) {
   var result = handlers.random_word.call(this, sampler, dictionaries, param);
   if (!result) {
@@ -101,10 +125,12 @@ handlers["="] = function(sampler, dictionaries, param, command) {
   return result;
 };
 
+// Handler for emiter of variables. {.|foo} - emit foo
 handlers["."] = function(sampler, dictionaries, param, command) {
   return param;
 };
 
+// Handler for setting up dynamic chat replies
 handlers["<"] = function(sampler, dictionaries, param, command) {
   if (param.entry) {
     param = param.entry.value;
@@ -116,6 +142,7 @@ handlers["<"] = function(sampler, dictionaries, param, command) {
   };
 };
 
+// Handler for math.js expressions
 handlers["?"] = function(sampler, dictionaries, param, command) {
   var scope = handlers.random_word.call(this, sampler, dictionaries, param);
   if (!scope) {
@@ -145,6 +172,8 @@ var unique_index = 0;
 var handler_self = {
   math: math //.create() -- Hack. But .create kills performance
 };
+
+// Math handlers
 handler_self.math.import({
   glue: function() {
     return String.prototype.concat.apply("", arguments);
@@ -194,7 +223,11 @@ handler_self.math.import({
   }
 }, { override: true });
 
+// Executes templates, commands, etc. Sentences in general
+// Context is an object which contains all context key (vars)
+// Context key is a variable in template that starts with a $
 var compile = function(template) {
+  // Regex sentence example: {%a|dict>placeholder}
   var commandRe = /^([%]?)([^|>]*)[|]?([^>]*)[>]?(.*?)$/;
 
   return function(sampler, dictionaries, context) {
@@ -210,6 +243,7 @@ var compile = function(template) {
       handler_self.sampler = sampler
       handler_self.dictionaries = dictionaries
 
+      // Works with [] templates. Like [head^tails] or [red^white]
       template = balanced.replacements({
         source: template,
         open: "[",
@@ -223,11 +257,13 @@ var compile = function(template) {
         }
       });
 
+      // Works with {} commands like {Hobbit>race}
       var result = balanced.replacements({
         source: template,
         open: "{",
         close: "}",
         replace: function(command, head, tail) {
+          // Head == {. tail == }
           if (command == "") {
             console.warn("commandless placeholder {} in", template);
             return head + command + tail;
@@ -239,6 +275,7 @@ var compile = function(template) {
             return head + command + tail; // Match failed.
           }
 
+          // Is output suppressed with %?
           var silent = matches[1];
 
           var action = matches[2]
@@ -256,6 +293,11 @@ var compile = function(template) {
             return "";
           }
 
+          // If first match is a dictionary and not a function (like 'a')
+          // if so, action is set up to 'random_word' which returns random word
+          // from a provided dictionary.
+          // Example: {colors}
+          // It will be converted to {random_word|colors}
           if (!param) {
             if (action === "\\n") {
               return "\n";
@@ -267,10 +309,13 @@ var compile = function(template) {
             action = action.toLocaleLowerCase();
           }
 
+          // If action is a math.js expression or accessing metadata fields
+          // Example: {=color|flower} or {%?foo=foo+1}
           if (action.charAt(0) === "=" || action.charAt(0) === "?") {
             action = action.charAt(0);
           }
 
+          // If param is a context variable
           if (param.charAt(0) === "$") {
             var contextKey = param.slice(1);
             if (context[contextKey] === undefined) {
@@ -318,6 +363,7 @@ var compile = function(template) {
             });
           }
 
+          // If result saved to context variable
           if (toContextKey) {
             context[toContextKey] = result;
           }
@@ -339,6 +385,7 @@ var compile = function(template) {
   };
 };
 
+// Load values to placeholders ({}). Example: {Race} were kind
 var fill_placeholders = function(sampler, template, dictionaries, context) {
   if (typeof template === 'object' && template !== null) {
     template = template.value;
@@ -350,6 +397,7 @@ var fill_placeholders = function(sampler, template, dictionaries, context) {
   return template(sampler, dictionaries, context);
 };
 
+// Generates one output entry (for drawing/printing for example)
 var generate_one = function(sampler, data, sentence, context) {
   if (!sentence) {
     sentence = sampler(data.sentences);
@@ -366,6 +414,7 @@ var generate_one = function(sampler, data, sentence, context) {
 
 var HTML = require("html.js");
 
+// Create dictionary from raw data (used only for factory settings)
 var d = function(raw) {
   var result = { };
   Object.keys(raw).forEach(function(key) {
@@ -427,6 +476,7 @@ var upgradeData = function(data) {
 
 var DATA;
 
+// Load data to JSON
 var SERIALIZE = function() {
   return 'z' + LZString.compressToBase64(JSON.stringify({
     version: VERSION,
@@ -437,6 +487,7 @@ var SERIALIZE = function() {
 // TODO: Use LZString.compressToEncodedURIComponent
 //       and LZString.decompressFromEncodedURIComponent
 
+// Load data from JSON
 var UNSERIALIZE = function(str) {
   var data;
   if (str.charAt(0) === 'z') {
@@ -501,6 +552,7 @@ var DEFAULT_LATEX = function() { return {
   epilogue: '\n\\end{document}\n'
 }; };
 
+// Reset
 var CLEAR_DATA = function() { return {
   meta: {
     title: "Generator Title",
@@ -523,6 +575,7 @@ var CLEAR_DATA = function() { return {
   latex: DEFAULT_LATEX()
 }; };
 
+// Chat example
 var CHAT_DATA = function() { return {
   meta: {
     title: "Generator Title",
@@ -551,6 +604,7 @@ var CHAT_DATA = function() { return {
   latex: DEFAULT_LATEX()
 }; };
 
+// Reset to factory examples
 var DEFAULT_DATA = function() { return {
   meta: {
     title: "Generator Title",
@@ -635,6 +689,7 @@ var urlToData = function() {
   return Base64.decode(window.location.hash.slice(10));
 };
 
+// Load data from url
 var STORED;
 try {
   STORED = urlToData();
@@ -666,7 +721,12 @@ var clear = function(dom) {
   }
 };
 
+// Factory of samplers, takes chance object as parameter
+// Chance is a chance.js library
 var makeSampler = function(chance) {
+  // Sampler takes data list as a parameter
+  // List can be sentences or dictionaries
+  // In general sample is a randomizer for data sets
   var sampler = function(list) {
     if (list.length === 0) {
       return undefined;
@@ -676,7 +736,10 @@ var makeSampler = function(chance) {
       || list.slice().fill(0, 0, list.length);
 
     var lowestCount = Infinity;
+    // Iterate over the samplerPicks list
     list.samplerPicks.forEach(function(count, index) {
+      // Check if weight specified in metadata field of entry
+      // list[index] -- entry of a dictionary
       var weight = list[index].meta && list[index].meta.weight;
       if (weight === undefined || window.isNaN(+weight)) {
         weight = 1;
@@ -703,6 +766,7 @@ var makeSampler = function(chance) {
       }
     });
 
+    // Get random weighted entry from list
     var index = chance.weighted(candidates, weights);
 
     ++list.samplerPicks[index];
@@ -822,6 +886,8 @@ updateChat = function() {
   }
 };
 
+// Creates output entries
+// DATA is a full data: dictionaries, sentences, rules, etc
 var generateDataset = function() {
   var chance = new Chance(DATA.preview.seed);
   var snapshot = JSON.stringify(DATA);
@@ -859,6 +925,7 @@ var updatePreview = function() {
     if (text.length <= 140 || !DATA.preview.overflow) {
       highlightStuff(div.add('span'), text);
     } else {
+      // Should be incremented for more than 140 because of twitter update
       highlightStuff(div.add('span'), text.slice(0, 140));
       highlightStuff(div.add('span.too-long'), text.slice(140));
     }
