@@ -33,6 +33,6 @@
     "lzwcompress": "^0.2.2",
     "mathjs": "^3.2.1",
     "node-balanced": "0.0.14",
-    "superagent": "^1.8.3"
+    "superagent": "^10.2.2"
   }
 }
